@@ -1,0 +1,14 @@
+{
+  "name": "webapp.2024.001",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/skywalker6666/web-app-2024001.git"
+  },
+  "private": true
+}
