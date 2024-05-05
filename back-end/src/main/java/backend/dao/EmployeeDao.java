@@ -1,8 +1,5 @@
-package backend.entity;
+package backend.dao;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,15 +9,12 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name="employee")
-public class Employee {
-    @Id
-
+public class EmployeeDao {
     private long id;
     private String firstName;
     private String lastName;
     private String email;
+
     public long getId() {
         return id;
     }
@@ -52,7 +46,4 @@ public class Employee {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
-
 }
