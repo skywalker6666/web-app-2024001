@@ -9,7 +9,7 @@ public class EmployeeMapper {
                 employee.getId(), employee.getFirstName(), employee.getLastName(), employee.getEmail()
         );
     }
-    public static Employee mapToEmployeeDao(EmployeeDao employeeDao){
+    public static Employee mapToEmployee(EmployeeDao employeeDao){
         return new Employee(
                 employeeDao.getId(),  employeeDao.getFirstName(),  employeeDao.getLastName(),  employeeDao.getEmail()
         );
