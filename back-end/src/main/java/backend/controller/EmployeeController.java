@@ -10,21 +10,31 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+
 @AllArgsConstructor
 @RestController
-@RequestMapping("/api/employee")
+@RequestMapping("/api/employees")
 public class EmployeeController {
     private EmployeeService employeeService;
+
     //Build ass employee rest api
     @PostMapping
     public ResponseEntity<EmployeeDao> createEmployee(@RequestBody EmployeeDao employeeDao) {
         EmployeeDao savedEmployee = employeeService.createEmployee(employeeDao);
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
+
     @GetMapping("{Id}")
-    public ResponseEntity<EmployeeDao> createEmployee(@RequestBody EmployeeDao employeeDao) {
-        EmployeeDao savedEmployee = employeeService.createEmployee(employeeDao);
-        return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
+    public ResponseEntity<EmployeeDao> getEmployeeById(@PathVariable("Id") Long employeeId) {
+        EmployeeDao employeeDao = employeeService.getEmployeeById(employeeId);
+        return ResponseEntity.ok(employeeDao);
     }
+    @GetMapping
+    public ResponseEntity<List<EmployeeDao>> getAllEmployees() {
+        List<EmployeeDao> employees=employeeService.getAllEmployees();
+        return ResponseEntity.ok(employees);
+    }
+
 }
