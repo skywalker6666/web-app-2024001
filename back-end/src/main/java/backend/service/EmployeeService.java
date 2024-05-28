@@ -8,4 +8,5 @@ public interface EmployeeService  {
     EmployeeDao createEmployee(EmployeeDao employeeDao);
     EmployeeDao getEmployeeById(Long employeeId);
     List<EmployeeDao> getAllEmployees();
+    EmployeeDao updateEmployee(Long employeeId,EmployeeDao employeeDao);
 }

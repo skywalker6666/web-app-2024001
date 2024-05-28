@@ -36,5 +36,11 @@ public class EmployeeController {
         List<EmployeeDao> employees=employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
+    @PutMapping("{Id}")
+    public  ResponseEntity<EmployeeDao> updateEmployee(Long employeeId,EmployeeDao updateEmployee){
+        EmployeeDao employeeDao=employeeService.updateEmployee(employeeId,updateEmployee);
+        return ResponseEntity.ok(employeeDao);
+
+    }
 
 }
