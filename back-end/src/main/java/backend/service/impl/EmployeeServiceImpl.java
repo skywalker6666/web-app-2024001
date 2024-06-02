@@ -39,10 +39,16 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public EmployeeDao updateEmployee(Long employeeId, EmployeeDao employeeDao) {
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee is not exists with given id:" + employeeId));
-        employee.setFirstName(employee.getFirstName());
-        employee.setLastName(employee.getLastName());
-        employee.setEmail(employee.getEmail());
+        employee.setFirstName(employeeDao.getFirstName());
+        employee.setLastName(employeeDao.getLastName());
+        employee.setEmail(employeeDao.getEmail());
         Employee updateEmployeeObj = employeeRepository.save(employee);
         return EmployeeMapper.mapToEmployeeDao(updateEmployeeObj);
+    }
+
+    @Override
+    public void deleteEmployee(Long employeeId) {
+        Employee employee = employeeRepository.findById(employeeId).orElseThrow(() -> new ResourceNotFoundException("Employee is not exists with given id:" + employeeId));
+        employeeRepository.deleteById(employeeId );
     }
 }

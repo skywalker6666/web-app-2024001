@@ -26,21 +26,28 @@ public class EmployeeController {
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
 
-    @GetMapping("{Id}")
-    public ResponseEntity<EmployeeDao> getEmployeeById(@PathVariable("Id") Long employeeId) {
+    @GetMapping("{id}")
+    public ResponseEntity<EmployeeDao> getEmployeeById(@PathVariable("id") Long employeeId) {
         EmployeeDao employeeDao = employeeService.getEmployeeById(employeeId);
         return ResponseEntity.ok(employeeDao);
     }
+
     @GetMapping
     public ResponseEntity<List<EmployeeDao>> getAllEmployees() {
-        List<EmployeeDao> employees=employeeService.getAllEmployees();
+        List<EmployeeDao> employees = employeeService.getAllEmployees();
         return ResponseEntity.ok(employees);
     }
-    @PutMapping("{Id}")
-    public  ResponseEntity<EmployeeDao> updateEmployee(Long employeeId,EmployeeDao updateEmployee){
-        EmployeeDao employeeDao=employeeService.updateEmployee(employeeId,updateEmployee);
-        return ResponseEntity.ok(employeeDao);
 
+    @PutMapping("{id}")
+    public ResponseEntity<EmployeeDao> updateEmployee(@PathVariable("id")Long employeeId, @RequestBody EmployeeDao updateEmployee) {
+        EmployeeDao employeeDao = employeeService.updateEmployee(employeeId, updateEmployee);
+        return ResponseEntity.ok(employeeDao);
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id")Long employeeId) {
+        employeeService.deleteEmployee(employeeId);
+        return ResponseEntity.ok("employee deleted successfully!");
     }
 
 }

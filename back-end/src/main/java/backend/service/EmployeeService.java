@@ -9,4 +9,5 @@ public interface EmployeeService  {
     EmployeeDao getEmployeeById(Long employeeId);
     List<EmployeeDao> getAllEmployees();
     EmployeeDao updateEmployee(Long employeeId,EmployeeDao employeeDao);
+    void deleteEmployee(Long employeeId);
 }
