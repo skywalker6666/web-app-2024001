@@ -1,18 +1,14 @@
 package backend.controller;
 
 import backend.dao.EmployeeDao;
-import backend.entity.Employee;
 import backend.service.EmployeeService;
 import lombok.AllArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-
+@CrossOrigin("*")
 @AllArgsConstructor
 @RestController
 @RequestMapping("/api/employees")
@@ -39,13 +35,13 @@ public class EmployeeController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<EmployeeDao> updateEmployee(@PathVariable("id")Long employeeId, @RequestBody EmployeeDao updateEmployee) {
+    public ResponseEntity<EmployeeDao> updateEmployee(@PathVariable("id") Long employeeId, @RequestBody EmployeeDao updateEmployee) {
         EmployeeDao employeeDao = employeeService.updateEmployee(employeeId, updateEmployee);
         return ResponseEntity.ok(employeeDao);
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<String> deleteEmployee(@PathVariable("id")Long employeeId) {
+    public ResponseEntity<String> deleteEmployee(@PathVariable("id") Long employeeId) {
         employeeService.deleteEmployee(employeeId);
         return ResponseEntity.ok("employee deleted successfully!");
     }
