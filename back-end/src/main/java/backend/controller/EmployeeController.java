@@ -1,13 +1,17 @@
 package backend.controller;
 
 import backend.dao.EmployeeDao;
+import backend.entity.Employee;
 import backend.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
+
 @CrossOrigin("*")
 @AllArgsConstructor
 @RestController
@@ -19,8 +23,10 @@ public class EmployeeController {
     @PostMapping
     public ResponseEntity<EmployeeDao> createEmployee(@RequestBody EmployeeDao employeeDao) {
         EmployeeDao savedEmployee = employeeService.createEmployee(employeeDao);
+
         return new ResponseEntity<>(savedEmployee, HttpStatus.CREATED);
     }
+
 
     @GetMapping("{id}")
     public ResponseEntity<EmployeeDao> getEmployeeById(@PathVariable("id") Long employeeId) {
@@ -45,5 +51,4 @@ public class EmployeeController {
         employeeService.deleteEmployee(employeeId);
         return ResponseEntity.ok("employee deleted successfully!");
     }
-
 }

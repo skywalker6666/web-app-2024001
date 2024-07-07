@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Getter
 @Setter
@@ -14,5 +15,4 @@ public class EmployeeDao {
     private String firstName;
     private String lastName;
     private String email;
-
 }
