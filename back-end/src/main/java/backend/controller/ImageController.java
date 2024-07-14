@@ -1,5 +1,6 @@
 package backend.controller;
 
+import backend.entity.Employee;
 import backend.service.ImageService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,13 @@ public class ImageController {
     @PostMapping("/fileSystem")
     public ResponseEntity<?> uploadImageToFIleSystem(@RequestParam("image")MultipartFile file) throws IOException {
         String uploadImage = service.uploadImageToFileSystem(file);
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(uploadImage);
+    }
+    @PutMapping("/fileSystem")
+    public ResponseEntity<?> updateEmployeeImage(@RequestParam("image")MultipartFile file,@RequestBody Employee employee) throws IOException {
+        String uploadImage = service.uploadImageToFileSystem(file);
+        employee.setImageName(uploadImage);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
     }

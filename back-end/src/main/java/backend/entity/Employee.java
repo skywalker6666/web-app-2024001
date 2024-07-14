@@ -23,9 +23,16 @@ public class Employee {
     private String firstName;
     private String lastName;
     private String email;
+    private String imageName;
 
+    @Column(name = "image_name")
+    public String getImageName() {
+        return imageName;
+    }
 
-
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
