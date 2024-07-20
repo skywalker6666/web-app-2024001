@@ -1,12 +1,17 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 const ImageComponent = ({ imageUrl }) => {
-  return (
-    <div align='center'>
+    const [src, setSrc] = useState(imageUrl);
 
-      <img src={imageUrl} alt="image" className='image' />
-    </div>
-  );
+    useEffect(() => {
+        setSrc(`${imageUrl}?${new Date().getTime()}`); // Append timestamp to force reload
+    });
+
+    return (
+        <div align='center'>
+            <img src={src} alt="image" className='image' />
+        </div>
+    );
 };
 
 export default ImageComponent;

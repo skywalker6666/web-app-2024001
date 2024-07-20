@@ -36,13 +36,16 @@ const ListEmployeeComponent = () => {
         uploadImage(selectedEmployeeId, selectedImage).then(() => {
             console.log('File uploaded successfully!');
             setSelectedImage(null);
-            setUploading(false);
+           
             getImage(selectedEmployeeId).then(response => {
                 setEmployees(prevEmployees => prevEmployees.map(employee =>
                     employee.id === selectedEmployeeId ? { ...employee, imageUrl: response.data.url } : employee
                 ));
+                 setUploading(false);
             }).catch(error => {
                 console.error('Error fetching image:', error);
+                setUploading(false);
+
             });
         }).catch(error => {
             console.error('Error uploading file:', error);

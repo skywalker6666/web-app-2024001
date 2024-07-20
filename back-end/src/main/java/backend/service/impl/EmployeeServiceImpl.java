@@ -10,6 +10,7 @@ import backend.repository.FileDataRepository;
 import backend.service.EmployeeService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -44,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public List<EmployeeDao> getAllEmployees() {
-        List<Employee> employeeList = employeeRepository.findAll();
+        List<Employee> employeeList = employeeRepository.findAll(Sort.by(Sort.Direction.ASC,"id"));
         return employeeList.stream().map(EmployeeMapper::mapToEmployeeDao).collect(Collectors.toList());
     }
 
